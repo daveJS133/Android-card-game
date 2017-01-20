@@ -8,8 +8,8 @@ import behaviours.*;
 public class BlackJGame{
   private BlackJDeck deck;
   private ArrayList<Player> players;
-  Player player1;
-  Player player2;
+  public Player player1;
+  public Player player2;
 
 
   public BlackJGame(String player1Name, String player2Name){
@@ -24,6 +24,7 @@ public class BlackJGame{
     players.add(player2);
 
     deck.populateBlackJDeck();
+    dealRound();
     dealRound();
   }
 

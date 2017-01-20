@@ -20,8 +20,16 @@ public class Player implements Dealable{
 
   }
 
-  public String getPlayerName(){
+  public Player getPlayer(){
+    return this;
+  }
+
+  public String getName(){
     return name;
+  }
+
+  public int getHandSize(){
+    return hand.size();
   }
 
 

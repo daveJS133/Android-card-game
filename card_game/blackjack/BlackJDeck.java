@@ -2,7 +2,7 @@ package blackjack;
 import java.util.*;
 import templates.*;
 import behaviours.*;
-
+import java.util.Random;
 
 
 
@@ -22,7 +22,7 @@ public class BlackJDeck extends Deck{
     this.faceCards = true;
     this.suits = new ArrayList<String>();
     this.deck = new ArrayList<StandardCard>();
-    Random rand = new Random();
+    Random rand;
   }
 
   public void populateBlackJDeck(){
@@ -41,7 +41,9 @@ public class BlackJDeck extends Deck{
   }
 
   public StandardCard pickUpCard(Player player){
-    int randomNum = rand.nextInt(numInSuit + 1) + 0;
+    rand = new Random();
+    int randomNum = rand.nextInt(numInSuit - 1 + 1) + 1;
+    System.out.println(randomNum);
     StandardCard newCard = deck.remove(randomNum);
     return newCard;
   }

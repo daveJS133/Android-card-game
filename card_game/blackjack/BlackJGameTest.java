@@ -9,22 +9,24 @@ import behaviours.*;
 import templates.*;
 
 
+
+
 public class BlackJGameTest{
  BlackJGame game;
- // Dealable spyPlayer;
+ Dealable spyPlayer;
 
 
  @Before 
  public void before(){
-  
+
   // game.setup();
   // game.dealRound();
   // spyPlayer = Mockito.spy(Player);
-}
+ }
 
-@Test
+ @Test
 
-public void testCanCreateGame(){
+ public void testCanCreateGame(){
   BlackJGame game = new BlackJGame("jim", "bob");
   assertEquals(game.getClass(), BlackJGame.class);
 }
@@ -32,14 +34,26 @@ public void testCanCreateGame(){
 @Test
 public void testCanCreatePlayer(){
   Player player1 = new Player("Dave");
-  assertEquals("Dave", player1.getPlayerName());
+  assertEquals("Dave", player1.getPlayer().getName());
 }
 
 @Test
 public void testCanSetUp(){
   BlackJGame game = new BlackJGame("jim", "bob");
   game.setup();
-  assertEquals(2, game.player2.hand.size());
+  assertEquals(2, game.player1.getPlayer().getHandSize());
 }
+
+// @Test
+// public void testPlayBothBustStub(){
+//   BlackJGame game = new BlackJGame("jim", "bob");
+//   game.setup();
+
+//   Mockito.when(spyPlayer.deal(deck)).thenReturn(StandardCard(StandardSuits CLUBS int 12));
+//   game.dealRound();
+//   game.dealRound();
+//   game.play();
+
+// }
 
 }

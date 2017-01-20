@@ -35,7 +35,11 @@ public class Player implements Dealable{
 
   public void deal(BlackJDeck deck){
     StandardCard card = deck.pickUpCard(this);
+    if (card.getValue() > 10){
+      card.setValue(10);
+    }
     this.hand.add(card);
+    System.out.println(this.name + " picks up the " + card.getValue() + " of "+ card.suit);
   }
 
   public int checkHandValue(){

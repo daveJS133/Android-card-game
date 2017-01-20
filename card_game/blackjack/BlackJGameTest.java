@@ -16,6 +16,9 @@ public class BlackJGameTest{
  Dealable spyPlayer;
 
 
+@Mock
+BlackJDeck spyDeck = Mockito.mock(BlackJDeck.class);
+
  @Before 
  public void before(){
 
@@ -24,36 +27,31 @@ public class BlackJGameTest{
   // spyPlayer = Mockito.spy(Player);
  }
 
- @Test
+ // @Test
 
- public void testCanCreateGame(){
-  BlackJGame game = new BlackJGame("jim", "bob");
-  assertEquals(game.getClass(), BlackJGame.class);
-}
-
-@Test
-public void testCanCreatePlayer(){
-  Player player1 = new Player("Dave");
-  assertEquals("Dave", player1.getPlayer().getName());
-}
-
-@Test
-public void testCanSetUp(){
-  BlackJGame game = new BlackJGame("jim", "bob");
-  game.setup();
-  assertEquals(2, game.player1.getPlayer().getHandSize());
-}
+//  public void testCanCreateGame(){
+//   BlackJGame game = new BlackJGame("jim", "bob");
+//   assertEquals(game.getClass(), BlackJGame.class);
+// }
 
 // @Test
-// public void testPlayBothBustStub(){
+// public void testCanCreatePlayer(){
+//   Player player1 = new Player("Dave");
+//   assertEquals("Dave", player1.getPlayer().getName());
+// }
+
+// @Test
+// public void testCanSetUp(){
 //   BlackJGame game = new BlackJGame("jim", "bob");
 //   game.setup();
-
-//   Mockito.when(spyPlayer.deal(deck)).thenReturn(StandardCard(StandardSuits CLUBS int 12));
-//   game.dealRound();
-//   game.dealRound();
-//   game.play();
-
+//   assertEquals(2, game.player1.getPlayer().getHandSize());
 // }
+
+@Test
+public void testPlay(){
+game = new BlackJGame("jim", "bob");
+  game.setup();
+  game.play();
+}
 
 }

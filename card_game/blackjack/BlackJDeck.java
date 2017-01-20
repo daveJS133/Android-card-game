@@ -43,7 +43,6 @@ public class BlackJDeck extends Deck{
   public StandardCard pickUpCard(Player player){
     rand = new Random();
     int randomNum = rand.nextInt(numInSuit - 1 + 1) + 1;
-    System.out.println(randomNum);
     StandardCard newCard = deck.remove(randomNum);
     return newCard;
   }

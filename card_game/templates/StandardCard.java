@@ -11,7 +11,7 @@ public class StandardCard {
   private int value;
   StandardSuits suit;
 
-   public StandardCard(StandardSuits suit, int value){
+  public StandardCard(StandardSuits suit, int value){
     this.value = value;
     this.suit = suit;
   }
@@ -24,5 +24,8 @@ public class StandardCard {
     return this.value;
   }
 
- 
+  public void setValue(int val){
+    this.value = val;
+  }
+
 }

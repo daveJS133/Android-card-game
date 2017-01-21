@@ -42,27 +42,37 @@ public class BlackJGame{
 
   public void play(){
     for (Player player: players) {
+      if (player1.getStick = true && player2.getStick = true){
+        checkStick(player);
+      }
+      else{
       System.out.println(player.getName()+"'s turn");
       if (player.checkHandValue() < 17)
       {
-        System.out.println(player.getName() + " has " + player.getHandSize() + " cards and hits");
-        player.deal(deck);
-        System.out.println(player.getName() + " now has " + player.getHandSize() + " cards, with a value of " + player.checkHandValue());
-        System.out.println("________________________________");
-        
+        hit(player);
         checkBust(player);
-
-        
-
-        // if (player2.checkHandValue() > player1.checkHandValue() && player2.checkHandValue()<21){
-        //   System.out.println("player2 wins");
-
-        // }
       }
-      System.out.println(player.getName() + " has " + player.getHandSize() + " cards, with a value of " + player.checkHandValue() + "sticks");
+      else{
+        System.out.println(player.getName() + " has " + player.getHandSize() + " cards, with a value of " + player.checkHandValue() + "sticks");
+        player.setStick = true;
+
+      }
     }
+  }
 
+  public void hit(Player player){
 
+    System.out.println(player.getName() + " has " + player.getHandSize() + " cards and hits");
+    player.deal(deck);
+    System.out.println(player.getName() + " now has " + player.getHandSize() + " cards, with a value of " + player.checkHandValue());
+    System.out.println("________________________________");
+  }
+
+  public void checkStick(Player player){
+    if (player.checkHandValue() > 21){
+      System.out.println(player.getName() + " is bust!");
+      return void;
+    }
   }
 
   public void checkBust(Player player){

@@ -59,30 +59,26 @@ public class BlackJGame{
       }
     }
   }
+}
 
-  public void hit(Player player){
-
-    System.out.println(player.getName() + " has " + player.getHandSize() + " cards and hits");
-    player.deal(deck);
-    System.out.println(player.getName() + " now has " + player.getHandSize() + " cards, with a value of " + player.checkHandValue());
-    System.out.println("________________________________");
+public void checkStick(Player player){
+  if (player.checkHandValue() > 21){
+    System.out.println(player.getName() + " is bust!");
+    return void;
   }
+}
 
-  public void checkStick(Player player){
-    if (player.checkHandValue() > 21){
-      System.out.println(player.getName() + " is bust!");
-      return void;
-    }
+public void checkBust(Player player){
+  if (player.checkHandValue() > 21){
+    System.out.println(player.getName() + " is bust!");
+    return void;
   }
+}
 
-  public void checkBust(Player player){
-    if (player.checkHandValue() > 21){
-      System.out.println(player.getName() + " is bust!");
-      return void;
-    }
-  }
+public void hit(Player player){
 
-
-
-
+  System.out.println(player.getName() + " has " + player.getHandSize() + " cards and hits");
+  player.deal(deck);
+  System.out.println(player.getName() + " now has " + player.getHandSize() + " cards, with a value of " + player.checkHandValue());
+  System.out.println("________________________________");
 }

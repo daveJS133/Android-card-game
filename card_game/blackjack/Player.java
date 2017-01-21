@@ -9,10 +9,12 @@ import blackjack.*;
 public class Player implements Dealable{
   private ArrayList<StandardCard> hand;
   private String name;
+  private Boolean stick;
 
   public Player(String name){
     this.hand = new ArrayList<StandardCard>();
     this.name = name;
+    this.stick = false;
   }
 
   public void setPlayerName(String newName){
@@ -31,6 +33,15 @@ public class Player implements Dealable{
   public int getHandSize(){
     return hand.size();
   }
+
+
+  public void setStick(){
+    stick = true;
+  }
+  public Boolean getStick(){
+    return stick;
+  }
+
 
 
   public void deal(BlackJDeck deck){

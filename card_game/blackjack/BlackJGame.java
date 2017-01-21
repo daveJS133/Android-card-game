@@ -11,7 +11,6 @@ public class BlackJGame{
   public Player player1;
   public Player player2;
 
-
   public BlackJGame(String player1Name, String player2Name){
     this.player1 = new Player(player1Name);
     this.player2 = new Player(player2Name);
@@ -50,10 +49,10 @@ public class BlackJGame{
         player.deal(deck);
         System.out.println(player.getName() + " now has " + player.getHandSize() + " cards, with a value of " + player.checkHandValue());
         System.out.println("________________________________");
-        if (player.checkHandValue() > 21){
-          System.out.println(player.getName() + " is bust!");
-          return void;
-        }s
+        
+        checkBust(player);
+
+        
 
         // if (player2.checkHandValue() > player1.checkHandValue() && player2.checkHandValue()<21){
         //   System.out.println("player2 wins");
@@ -65,4 +64,15 @@ public class BlackJGame{
 
 
   }
+
+  public void checkBust(Player player){
+    if (player.checkHandValue() > 21){
+      System.out.println(player.getName() + " is bust!");
+      return void;
+    }
+  }
+
+
+
+
 }

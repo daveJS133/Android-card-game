@@ -25,7 +25,7 @@ public class BlackJGame{
     deck.populateBlackJDeck();
     System.out.println("dealing starting hand");
     dealRound();
-    dealRound();
+    player1.deal(deck); 
     System.out.println("setup over");
   }
 
@@ -38,40 +38,43 @@ public class BlackJGame{
       System.out.println(player.getName() + " now has " + player.getHandSize() + " cards, with a value of " + player.checkHandValue());
       System.out.println("________________________________");
     }
+
   }
 
   public void play(){
     for (Player player: players) {
-      if (player1.getStick = true && player2.getStick = true){
-        checkStick(player);
+      if (player1.getStick() == true && player2.getStick() == true){
+        checkStick();
       }
       else{
         System.out.println(player.getName()+"'s turn");
-        if (player.checkHandValue() < 17)
+        while (player.checkHandValue() < 17)
         {
           hit(player);
           checkBust(player);
         }
-        else{
-          System.out.println(player.getName() + " has " + player.getHandSize() + " cards, with a value of " + player.checkHandValue() + "sticks");
-          player.setStick = true;
-
-        }
+        
+        System.out.println(player.getName() + " has " + player.getHandSize() + " cards, with a value of " + player.checkHandValue() + "sticks");
+        player.setStick();
       }
     }
   }
 
-  public void checkStick(Player player){
-    if (player.checkHandValue() > 21){
-      System.out.println(player.getName() + " is bust!");
-      break
+  public void checkStick(){
+    if (player1.checkHandValue() > player2.checkHandValue()){
+      System.out.println(player1.getName() + " wins!");
     }
+    else{
+      System.out.println(player2.getName() + " wins!");
+    }
+    // break;
   }
+  
 
   public void checkBust(Player player){
     if (player.checkHandValue() > 21){
       System.out.println(player.getName() + " is bust!");
-      break;
+      // break;
     }
   }
 

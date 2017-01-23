@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CardGame</string>
+
+    <string name="blackjack_button">Play Blackjack -></string>
+    <string name="welcome_content">Let\'s Play Cards!</string>
+
+    <string name="title_activity_play_black_j">Play Blackjack!</string>
+    <string name="name">Enter your name</string>
+</resources>

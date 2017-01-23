@@ -49,7 +49,7 @@ BlackJDeck spyDeck = Mockito.mock(BlackJDeck.class);
 
 @Test
 public void testPlay(){
-game = new BlackJGame("jim", "bob");
+game = new BlackJGame("Dave", "Dealer");
   game.setup();
   game.play();
 }

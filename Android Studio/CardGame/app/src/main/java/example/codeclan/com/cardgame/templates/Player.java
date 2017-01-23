@@ -1,0 +1,66 @@
+package example.codeclan.com.cardgame.templates;
+
+import java.util.ArrayList;
+
+import example.codeclan.com.cardgame.behaviours.Dealable;
+import example.codeclan.com.cardgame.blackjack.BlackJDeck;
+
+/**
+ * Created by user on 23/01/2017.
+ */
+
+public class Player implements Dealable {
+    private ArrayList<StandardCard> hand;
+    private String name;
+    private Boolean stick;
+
+    public Player(String name){
+        this.hand = new ArrayList<StandardCard>();
+        this.name = name;
+        this.stick = false;
+    }
+
+    public void setPlayerName(String newName){
+        name = newName;
+
+    }
+
+    public Player getPlayer(){
+        return this;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public int getHandSize(){
+        return hand.size();
+    }
+
+
+    public void setStick(){
+        stick = true;
+    }
+    public Boolean getStick(){
+        return stick;
+    }
+
+
+
+    public void deal(BlackJDeck deck){
+        StandardCard card = deck.pickUpCard(this);
+        if (card.getValue() > 10){
+            card.setValue(10);
+        }
+        this.hand.add(card);
+        System.out.println(this.name + " picks up the " + card.getValue() + " of "+ card.suit);
+    }
+
+    public int checkHandValue(){
+        int total = 0;
+        for (StandardCard thisCard: hand) {
+            total += thisCard.getValue();
+        }
+        return total;
+    }
+}

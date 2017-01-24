@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
 
 import example.codeclan.com.cardgame.blackjack.BlackJGame;
 
@@ -19,6 +20,7 @@ import example.codeclan.com.cardgame.blackjack.BlackJGame;
 public class PlayBlackJActivity extends AppCompatActivity {
 
     BlackJGame game;
+    TextView nameText;
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -120,6 +122,8 @@ public class PlayBlackJActivity extends AppCompatActivity {
         String name = extras.getString("name");
         game = new BlackJGame(name);
         Log.d(getClass().toString(), "game created");
+        nameText = (TextView)findViewById(R.id.name_text);
+        nameText.setText(name);
     }
 
     @Override

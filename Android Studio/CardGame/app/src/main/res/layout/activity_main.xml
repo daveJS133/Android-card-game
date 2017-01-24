@@ -15,51 +15,81 @@
 
 
     <LinearLayout
-        android:orientation="vertical" android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <EditText
-        android:id="@+id/name_text"
-        android:hint="@string/name"
-        android:textSize="30dp"
-        android:layout_marginTop="50dp"
-        android:layout_width="wrap_content"
-        android:layout_height="71dp" />
-
-
-
-
-
-    <Button
-        android:id="@+id/submitName"
-        style="@android:style/Widget.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.00"
-        android:text="Submit name"
-        android:onClick="onSubmitNameButtonPressed"
-        android:visibility="visible"
-        android:soundEffectsEnabled="false" />
-
-        <Button
-            android:id="@+id/blackjack_button"
+        <RelativeLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/blackjack_button"
-            android:onClick="onBlackjackButtonPressed"
-            android:visibility="invisible"
-            android:soundEffectsEnabled="false" />
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/name_text"
+                android:hint="@string/name"
+                android:textSize="30dp"
+                android:layout_marginTop="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="71dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                />
+
+
+
+
+
+            <Button
+                android:id="@+id/submitName"
+                style="@android:style/Widget.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.00"
+                android:text="Submit name"
+                android:onClick="onSubmitNameButtonPressed"
+                android:visibility="visible"
+                android:soundEffectsEnabled="false"
+                android:layout_toRightOf="@id/name_text"
+                android:layout_alignBaseline="@id/name_text"
+                android:layout_marginLeft="10dp"/>
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <Button
+                android:id="@+id/blackjack_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/blackjack_button"
+                android:onClick="onBlackjackButtonPressed"
+                android:visibility="invisible"
+                android:soundEffectsEnabled="false" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+        </LinearLayout>
     </LinearLayout>
 
     <TextView
         android:id="@+id/fullscreen_content"
-        android:layout_width="0dp"
-        android:layout_height="197dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:gravity="center"
         android:keepScreenOn="true"
         android:text="@string/welcome_content"
         android:textColor="#33b5e5"
         android:textSize="50sp"
         android:textStyle="bold" />
+
 </FrameLayout>

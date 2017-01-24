@@ -45,7 +45,6 @@
                 style="@android:style/Widget.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.00"
                 android:text="Submit name"
                 android:onClick="onSubmitNameButtonPressed"
                 android:visibility="visible"
@@ -62,6 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
+
             <Button
                 android:id="@+id/blackjack_button"
                 android:layout_width="match_parent"
@@ -70,6 +70,7 @@
                 android:onClick="onBlackjackButtonPressed"
                 android:visibility="invisible"
                 android:soundEffectsEnabled="false" />
+
         </LinearLayout>
 
         <LinearLayout

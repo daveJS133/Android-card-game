@@ -48,7 +48,7 @@ public class PlayBlackJActivity extends AppCompatActivity {
         updateViews();
         game.play();
         updateViews();
-        game.checkStick();
+
 
             updateWinner();
         }

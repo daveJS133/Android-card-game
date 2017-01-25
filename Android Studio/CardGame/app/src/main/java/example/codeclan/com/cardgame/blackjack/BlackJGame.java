@@ -36,7 +36,7 @@ public class BlackJGame {
         dealRound();
         player1.deal(deck);
         System.out.println("setup over");
-        checkStick();
+//        checkStick();
 
     }
 
@@ -51,76 +51,105 @@ public class BlackJGame {
     }
 
     public void play() {
+        turnloop:
+        for (BlackJPlayer player : players){
+            while(player.checkHandValue() < 17){
+                hit(player);
+            }
+            if (player.checkHandValue() > 21){
+                context.setChecker(player.getName() + " is bust!");
+                context.updateWinner();
+                break turnloop;
+            }
+            else {
+                player.setStick();
+            }
+        }
+        if (player1.getStick() && player2.getStick()){
+            if (player1.checkHandValue()>player2.checkHandValue()){
+                context.setChecker(player1.getName() + " wins!");
+            } else if (player1.checkHandValue()<player2.checkHandValue()){
+                context.setChecker(player2.getName() + " wins!");
 
-        for (BlackJPlayer player : players) {
-            while (!checkBust(player1) && !checkBust(player2)) {
-                while (!player.getStick()) {
-                    context.setChecker(player.getName() + "'s turn");
-//                while (player == player1){
-//                  context.onHitButtonPressed{
-//                hit(player)
-//                checkBust(player);
+            }else{
+                context.setChecker("Draw!");
+
+            }
+            context.updateWinner();
+
+            }
+        }
+
+
+
+//        for (BlackJPlayer player : players) {
+//            while (!checkBust(player) && !checkBust(player2)) {
+//                while (!player.getStick()) {
+//                    context.setChecker(player.getName() + "'s turn");
+////                while (player == player1){
+////                  context.onHitButtonPressed{
+////                hit(player)
+////                checkBust(player);
+////            }
+////                System.out.println(player.getName() + " has " + player.getHandSize() + " cards, with a value of " + player.checkHandValue() + " & sticks");
+////                player.setStick();
+//
+////            }
+////                else{
+//                    while (player.checkHandValue() < 17) {
+//                        hit(player);
+//                        player.checkHandValue();
+//                    }
+//
+//
+//                    if (checkBust(player)) {
+//                        context.setChecker(player.getName() + " is bust!");
+//                        context.updateWinner();
+//                    } else {
+//                        player.setStick();
+//                    }
+//                }
+//
 //            }
-//                System.out.println(player.getName() + " has " + player.getHandSize() + " cards, with a value of " + player.checkHandValue() + " & sticks");
-//                player.setStick();
-
+//        }
+//
+//
+//            if (player1.getStick() && player2.getStick()) {
+//                if (player1.checkHandValue() > player2.checkHandValue()) {
+//                    context.setChecker("Player 1 wins");
+//                    context.updateWinner();
+//                } else {
+//                    context.setChecker("Player 2 wins");
+//                    context.updateWinner();
+//                }
 //            }
-//                else{
-                    while (player.checkHandValue() < 17) {
-                        hit(player);
-                        player.checkHandValue();
-                    }
-
-                    if (player.checkHandValue() == 21) {
-                        context.setChecker(player.getName() + " wins");
-                        context.updateWinner();
-
-                    } else if (checkBust(player)) {
-                        context.setChecker(player.getName() + " is bust!");
-                        context.updateWinner();
-                    } else {
-                        player.setStick();
-                    }
-                }
-
-            }
-            if (player1.getStick() && player2.getStick()) {
-                if (player1.checkHandValue() > player2.checkHandValue()) {
-                    context.setChecker("Player 1 wins");
-                    context.updateWinner();
-                } else {
-                    context.setChecker("Player 2 wins");
-                    context.updateWinner();
-                }
-            }
-        }
-    }
+//        }
 
 
 
-    public String checkStick() {
-        if (player1.getStick() && player2.getStick()) {
-            if (player1.checkHandValue() > player2.checkHandValue()) {
-                return (player1.getName() + " wins!");
-            } else {
-                return (player2.getName() + " wins!");
-            }
-        } else {
-            return "Playing";
-        }
 
-    }
-
-
-    public Boolean checkBust(BlackJPlayer player) {
-        if (player.checkHandValue() > 21) {
-            return true;
-            // break;
-             }
-            else{
-            return false;
-        }
-    }
+//    public String checkStick() {
+//        if (player1.getStick() && player2.getStick()) {
+//            if (player1.checkHandValue() > player2.checkHandValue()) {
+//                return (player1.getName() + " wins!");
+//            } else {
+//                return (player2.getName() + " wins!");
+//            }
+//        } else {
+//            return "Playing";
+//        }
+//
+//    }
+//
+//
+//    public Boolean checkBust(BlackJPlayer player) {
+//        if (player.checkHandValue() > 21) {
+//            return true;
+//             }
+//            else{
+//            return false;
+//        }
+//    }
 
 
     public void hit(BlackJPlayer player) {

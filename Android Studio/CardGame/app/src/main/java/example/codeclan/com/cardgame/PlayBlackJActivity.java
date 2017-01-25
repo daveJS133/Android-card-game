@@ -26,6 +26,7 @@ public class PlayBlackJActivity extends AppCompatActivity {
     TextView nameText;
     BlackJPlayer player;
     StandardCard card;
+    String checker = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +49,10 @@ public class PlayBlackJActivity extends AppCompatActivity {
         game.play();
         updateViews();
         game.checkStick();
-        if (game.player1.getStick() && game.player2.getStick()) {
+
             updateWinner();
         }
-    }
+
 
 
 //    may be able to add to new class all below if find syntax for activity
@@ -63,14 +64,20 @@ public void updateViews(){
     handView = (LinearLayout) findViewById(R.id.player_hand);
 
     game.populateHandViews(handView, game.player1);
+    updateWinner();
 
 }
 
     public void updateWinner(){
         TextView WinnerText = (TextView) findViewById(R.id.winner_text);
 
-        WinnerText.setText(game.checkStick());
+        WinnerText.setText(checker);
 
+    }
+
+    public void setChecker(String newCheck){
+        checker = newCheck;
+        updateWinner();
     }
 
 

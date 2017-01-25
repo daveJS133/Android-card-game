@@ -2,20 +2,15 @@ package example.codeclan.com.cardgame.blackjack;
 
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import java.util.ArrayList;
-
 import example.codeclan.com.cardgame.PlayBlackJActivity;
-import example.codeclan.com.cardgame.R;
-import example.codeclan.com.cardgame.behaviours.Dealable;
-import example.codeclan.com.cardgame.blackjack.BlackJPlayer;
 import example.codeclan.com.cardgame.templates.StandardCard;
 
 /**
  * Created by user on 23/01/2017.
  */
 
-public class BlackJGame{
+public class BlackJGame {
 
     protected PlayBlackJActivity context;
     private BlackJDeck deck;
@@ -24,7 +19,7 @@ public class BlackJGame{
     public BlackJPlayer player2;
 
 
-    public BlackJGame(String player1Name, PlayBlackJActivity _context){
+    public BlackJGame(String player1Name, PlayBlackJActivity _context) {
         context = _context;
         this.player1 = new BlackJPlayer(player1Name, context);
         this.player2 = new BlackJPlayer("Dealer", context);
@@ -32,7 +27,7 @@ public class BlackJGame{
         this.players = new ArrayList<BlackJPlayer>();
     }
 
-    public void setup(){
+    public void setup() {
         players.add(player1);
         players.add(player2);
 
@@ -45,25 +40,22 @@ public class BlackJGame{
 
     }
 
-    public void dealRound(){
+    public void dealRound() {
 
-        for (BlackJPlayer player: players) {
+        for (BlackJPlayer player : players) {
             System.out.println(player.getName() + " has " + player.getHandSize() + " cards");
-
             player.deal(deck);
             System.out.println(player.getName() + " now has " + player.getHandSize() + " cards, with a value of " + player.checkHandValue());
             System.out.println("________________________________");
         }
-
     }
 
-    public void play(){
-        for (BlackJPlayer player: players) {
-            if (player1.getStick() && player2.getStick()){
-                checkStick();
-            }
-            else {
-                System.out.println(player.getName() + "'s turn");
+    public void play() {
+
+        for (BlackJPlayer player : players) {
+            while (!checkBust(player1) && !checkBust(player2)) {
+                while (!player.getStick()) {
+                    context.setChecker(player.getName() + "'s turn");
 //                while (player == player1){
 //                  context.onHitButtonPressed{
 //                hit(player)
@@ -74,45 +66,65 @@ public class BlackJGame{
 
 //            }
 //                else{
-                while (player.checkHandValue() < 17)
-                {
-                    hit(player);
-                    checkBust(player);
+                    while (player.checkHandValue() < 17) {
+                        hit(player);
+
+                    }
+
+                    if (player.checkHandValue() == 21){
+                         context.setChecker(player.getName() +" wins");
+                        context.updateWinner();
+
+                    } else if (checkBust(player)) {
+                        context.setChecker(player.getName() + " is bust!");
+                        context.updateWinner();
+                    } else {
+                        player.setStick();
+                    }
+                }
+                if (player1.getStick() && player2.getStick()) {
+                    if (player1.checkHandValue() > player2.checkHandValue()) {
+                         context.setChecker("Player 1 wins");
+                        context.updateWinner();
+                    } else {
+                        context.setChecker("Player 2 wins");
+                        context.updateWinner();
+                    }
                 }
 
-                System.out.println(player.getName() + " has " + player.getHandSize() + " cards, with a value of " + player.checkHandValue() + " & sticks");
-                player.setStick();
-                checkStick();
+
             }
         }
-
-
     }
 
+
+
     public String checkStick() {
-        if (player1.getStick() && player2.getStick()){
+        if (player1.getStick() && player2.getStick()) {
             if (player1.checkHandValue() > player2.checkHandValue()) {
                 return (player1.getName() + " wins!");
             } else {
                 return (player2.getName() + " wins!");
             }
-            }else{
+        } else {
             return "Playing";
         }
 
     }
 
 
-    public void checkBust(BlackJPlayer player) {
+    public Boolean checkBust(BlackJPlayer player) {
         if (player.checkHandValue() > 21) {
-                    System.out.println(player.getName() + " is bust!");
-                    // break;
-                }
-            }
+            return true;
+            // break;
+             }
+            else{
+            return false;
+        }
+    }
 
 
-
-    public void hit(BlackJPlayer player){
+    public void hit(BlackJPlayer player) {
 
         System.out.println(player.getName() + " has " + player.getHandSize() + " cards and hits");
         player.deal(deck);
@@ -120,16 +132,14 @@ public class BlackJGame{
         System.out.println("________________________________");
     }
 
-    public ArrayList getPlayers(){
+    public ArrayList getPlayers() {
         return players;
     }
 
 
-
-
-    public  void populateHandViews(LinearLayout handView, BlackJPlayer player){
+    public void populateHandViews(LinearLayout handView, BlackJPlayer player) {
         handView.removeAllViews();
-        for (StandardCard card : player.getHand()){
+        for (StandardCard card : player.getHand()) {
             TextView cardView = new TextView(context);
             String val = card.getFace();
             String message = val + " " + card.getSuit();
@@ -137,6 +147,5 @@ public class BlackJGame{
             handView.addView(cardView);
         }
     }
-
 
 }

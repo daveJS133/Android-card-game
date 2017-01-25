@@ -68,11 +68,11 @@ public class BlackJGame {
 //                else{
                     while (player.checkHandValue() < 17) {
                         hit(player);
-
+                        player.checkHandValue();
                     }
 
-                    if (player.checkHandValue() == 21){
-                         context.setChecker(player.getName() +" wins");
+                    if (player.checkHandValue() == 21) {
+                        context.setChecker(player.getName() + " wins");
                         context.updateWinner();
 
                     } else if (checkBust(player)) {
@@ -82,17 +82,16 @@ public class BlackJGame {
                         player.setStick();
                     }
                 }
-                if (player1.getStick() && player2.getStick()) {
-                    if (player1.checkHandValue() > player2.checkHandValue()) {
-                         context.setChecker("Player 1 wins");
-                        context.updateWinner();
-                    } else {
-                        context.setChecker("Player 2 wins");
-                        context.updateWinner();
-                    }
+
+            }
+            if (player1.getStick() && player2.getStick()) {
+                if (player1.checkHandValue() > player2.checkHandValue()) {
+                    context.setChecker("Player 1 wins");
+                    context.updateWinner();
+                } else {
+                    context.setChecker("Player 2 wins");
+                    context.updateWinner();
                 }
-
-
             }
         }
     }

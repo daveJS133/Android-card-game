@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import example.codeclan.com.cardgame.templates.Deck;
-import example.codeclan.com.cardgame.templates.Player;
+
 import example.codeclan.com.cardgame.templates.StandardCard;
 import example.codeclan.com.cardgame.templates.StandardSuits;
 
@@ -39,8 +39,10 @@ public class BlackJDeck extends Deck {
             for(int i=0; i<numInSuit; i++){
                 StandardCard card = createCard(suit, i+1);
                 deck.add(card);
+                System.out.println("deck: "+ card.getSuit().toString() + " " + card.getValue());
             }
         }
+
     }
 
     public StandardCard createCard(StandardSuits suit, int value){
@@ -48,7 +50,7 @@ public class BlackJDeck extends Deck {
         return card;
     }
 
-    public StandardCard pickUpCard(Player player){
+    public StandardCard pickUpCard(BlackJPlayer player){
         rand = new Random();
         int randomNum = rand.nextInt(numInSuit - 1 + 1) + 1;
         StandardCard newCard = deck.remove(randomNum);

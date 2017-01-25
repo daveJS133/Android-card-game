@@ -19,11 +19,23 @@
                 android:layout_height="0dp"
                 android:layout_weight="1">
 
+                <LinearLayout
+                    android:id="@+id/dealer_hand"
+                    android:orientation="vertical"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </LinearLayout>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Dealer"
-                    android:layout_alignParentBottom="true"/>
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="50sp"/>
 
             </RelativeLayout>
             <!--dealer end-->
@@ -35,46 +47,71 @@
                 android:layout_height="0dp"
                 android:layout_weight="1">
 
+                <LinearLayout
+                    android:id="@+id/player_hand"
+                    android:orientation="vertical"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/winner_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="75sp"/>
+
                 <TextView
                     android:id="@+id/name_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:layout_alignParentTop="true"/>
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="50sp"/>
 
 
             </RelativeLayout>
 
             <!--player end-->
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/fullscreen_content_controls"
-            style="?metaButtonBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:background="@color/black_overlay"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent">
-
-            <Button
-                android:id="@+id/button6"
-                style="?metaButtonBarButtonStyle"
+            <LinearLayout
+                android:layout_weight="0.05"
+                android:id="@+id/fullscreen_content_controls"
+                style="?metaButtonBarStyle"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_width="187dp" />
+                android:layout_gravity="bottom|center_horizontal"
+                android:background="@color/black_overlay"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <Button
+                    android:id="@+id/button6"
+                    style="?metaButtonBarButtonStyle"
+                    android:layout_height="wrap_content"
+                    android:layout_width="187dp" />
                 <!--android:text="@string/dummy_button"-->
 
 
-            <Button
-                android:id="@+id/dummy_button"
-                style="?metaButtonBarButtonStyle"
-                android:layout_height="wrap_content"
-                android:layout_width="195dp" />
+                <Button
+                    android:id="@+id/dummy_button"
+                    style="?metaButtonBarButtonStyle"
+                    android:layout_height="wrap_content"
+                    android:layout_width="195dp" />
                 <!--android:text="@string/dummy_button"-->
 
 
+            </LinearLayout>
+
         </LinearLayout>
+
+
     </FrameLayout>
 

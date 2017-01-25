@@ -7,6 +7,7 @@ package example.codeclan.com.cardgame.templates;
 public class StandardCard {
     private int value;
     StandardSuits suit;
+    String face = "";
 
     public StandardCard(StandardSuits suit, int value){
         this.value = value;
@@ -24,5 +25,15 @@ public class StandardCard {
     public void setValue(int val){
         this.value = val;
     }
+
+    public void setFace(String newFace){
+        face = newFace;
+    }
+
+    public String getFace(){
+        return face;
+    }
+
+
 
 }
